@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | POS System</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap");
+
+      body {
+        font-family: "Poppins", "Kantumruy Pro", sans-serif;
+        background-image: url("https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* Glassmorphism Effect for Overlay */
+      .glass-overlay {
+        background: rgba(17, 24, 39, 0.7); /* Dark overlay */
+        backdrop-filter: blur(8px);
+      }
+
+      /* Input Animation */
+      .input-group:focus-within i {
+        color: #3b82f6; /* Blue-500 */
+        transform: scale(1.2);
+      }
+      .input-group i {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="h-screen w-full flex items-center justify-center glass-overlay">
+    <div
+      class="bg-white w-full max-w-md p-8 rounded-2xl shadow-2xl transform transition-all hover:scale-[1.01] animate__animated animate__zoomIn"
+    >
+      <div class="text-center mb-8">
+        <div
+          class="w-20 h-20 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30 animate__animated animate__bounceIn"
+        >
+          <i class="fas fa-cash-register text-3xl text-white"></i>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-800 tracking-wide">
+          POS System
+        </h1>
+        <p class="text-gray-500 text-sm mt-2">
+          សូមស្វាគមន៍! ចូលប្រើប្រាស់គណនីរបស់អ្នក
+        </p>
+      </div>
+
+      <form id="loginForm" action="/login" method="POST" class="space-y-6">
+        <div class="relative input-group">
+          <div
+            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+          >
+            <i class="fas fa-envelope text-gray-400"></i>
+          </div>
+          <input
+            type="email"
+            name="email"
+            required
+            class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-700"
+            placeholder="អ៊ីមែល (Email Address)"
+          />
+        </div>
+
+        <div class="relative input-group">
+          <div
+            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"
+          >
+            <i class="fas fa-lock text-gray-400"></i>
+          </div>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            class="w-full pl-11 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-gray-700"
+            placeholder="ពាក្យសម្ងាត់ (Password)"
+          />
+
+          <div
+            class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer"
+            onclick="togglePassword()"
+          >
+            <i
+              class="fas fa-eye text-gray-400 hover:text-blue-500 transition-colors"
+              id="eyeIcon"
+            ></i>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-sm">
+          <label
+            class="flex items-center text-gray-600 cursor-pointer hover:text-blue-600"
+          >
+            <input
+              type="checkbox"
+              class="mr-2 rounded text-blue-600 focus:ring-blue-500 border-gray-300"
+            />
+            ចងចាំគណនី
+          </label>
+          <a
+            href="#"
+            class="font-medium text-blue-600 hover:text-blue-500 hover:underline"
+            >ភ្លេចពាក្យសម្ងាត់?</a
+          >
+        </div>
+
+        <button
+          type="submit"
+          id="submitBtn"
+          class="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transform transition hover:-translate-y-1 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          <span id="btnText">ចូលប្រព័ន្ធ (Login)</span>
+          <i
+            class="fas fa-arrow-right ml-2 animate__animated animate__headShake animate__infinite infinite"
+          ></i>
+        </button>
+      </form>
+
+      <div class="mt-8 text-center text-xs text-gray-400">
+        <p>&copy; 2024 Your Company POS. All rights reserved.</p>
+      </div>
+    </div>
+
+    <script>
+      // មុខងារបង្ហាញ/លាក់ Password
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          eyeIcon.classList.remove("fa-eye");
+          eyeIcon.classList.add("fa-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          eyeIcon.classList.remove("fa-eye-slash");
+          eyeIcon.classList.add("fa-eye");
+        }
+      }
+
+      // គ្រប់គ្រងការ Submit Form (ដើម្បីបង្ហាញ Animation និងចាប់ Error)
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault(); // ឃាត់មិនឱ្យ Refresh ភ្លាមៗ
+
+          const btn = document.getElementById("submitBtn");
+          const btnText = document.getElementById("btnText");
+          const originalContent = btn.innerHTML;
+
+          // ផ្លាស់ប្តូរ Button ទៅជា Loading
+          btn.innerHTML =
+            '<i class="fas fa-circle-notch fa-spin"></i> កំពុងផ្ទៀងផ្ទាត់...';
+          btn.disabled = true;
+          btn.classList.add("opacity-75", "cursor-not-allowed");
+
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+              // Login ជោគជ័យ
+              Swal.fire({
+                icon: "success",
+                title: "ជោគជ័យ!",
+                text: "កំពុងចូលទៅកាន់ប្រព័ន្ធ...",
+                timer: 1500,
+                showConfirmButton: false,
+              }).then(() => {
+                window.location.href = result.redirectUrl || "/";
+              });
+            } else {
+              // Login បរាជ័យ
+              throw new Error(result.message || "មានបញ្ហាបច្ចេកទេស");
+            }
+          } catch (error) {
+            // បង្ហាញ Error ស្អាតៗ
+            Swal.fire({
+              icon: "error",
+              title: "បរាជ័យ",
+              text: error.message,
+              confirmButtonColor: "#3085d6",
+            });
+
+            // ត្រឡប់ Button មកសភាពដើម
+            btn.innerHTML = originalContent;
+            btn.disabled = false;
+            btn.classList.remove("opacity-75", "cursor-not-allowed");
+          }
+        });
+    </script>
+  </body>
+</html>
