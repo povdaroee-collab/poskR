@@ -1,0 +1,4 @@
+node_modules
+.env
+firebase-config-local.json
+.DS_Store

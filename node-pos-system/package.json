@@ -1,0 +1,23 @@
+{
+  "name": "pos-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.4",
+    "ejs": "^4.0.1",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.1",
+    "moment": "^2.30.1",
+    "pdfkit": "^0.17.2"
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern POS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .product-card:active {
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 h-screen flex overflow-hidden">
+    <div
+      class="w-20 bg-white shadow-lg flex flex-col items-center py-5 space-y-6"
+    >
+      <div class="p-3 bg-blue-600 rounded-xl text-white font-bold">POS</div>
+      <button
+        class="p-3 hover:bg-blue-50 text-blue-600 rounded-xl transition duration-300"
+      >
+        🏠
+      </button>
+      <button
+        class="p-3 hover:bg-blue-50 text-gray-400 rounded-xl transition duration-300"
+      >
+        📦
+      </button>
+    </div>
+
+    <div class="flex-1 flex flex-col">
+      <header
+        class="h-16 bg-white shadow-sm flex items-center justify-between px-6"
+      >
+        <h1
+          class="text-xl font-bold text-gray-700 animate__animated animate__fadeInLeft"
+        >
+          General Store
+        </h1>
+        <input
+          type="text"
+          placeholder="🔍 Scan Barcode / Search..."
+          class="bg-gray-100 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition w-96"
+        />
+      </header>
+
+      <div class="p-6 overflow-y-auto grid grid-cols-4 gap-4" id="product-grid">
+        <div
+          class="product-card bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition duration-300 cursor-pointer border border-transparent hover:border-blue-500 animate__animated animate__zoomIn"
+        >
+          <div class="h-32 bg-gray-200 rounded-xl mb-3 overflow-hidden">
+            <img
+              src="https://via.placeholder.com/150"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="font-bold text-gray-800">Coke Can</h3>
+          <p class="text-blue-600 font-bold">$0.50</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="w-96 bg-white shadow-2xl flex flex-col z-10 animate__animated animate__slideInRight"
+    >
+      <div class="p-5 border-b">
+        <h2 class="font-bold text-lg">Current Order</h2>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-4 space-y-3" id="cart-items">
+        <div
+          class="flex justify-between items-center bg-gray-50 p-3 rounded-lg"
+        >
+          <div>
+            <p class="font-bold text-sm">Coke Can</p>
+            <p class="text-xs text-gray-500">$0.50 x 2</p>
+          </div>
+          <span class="font-bold">$1.00</span>
+        </div>
+      </div>
+
+      <div class="p-5 bg-gray-50 border-t">
+        <div class="flex justify-between text-lg font-bold mb-4">
+          <span>Total</span>
+          <span class="text-blue-600">$12.50</span>
+        </div>
+        <button
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold shadow-lg transform transition hover:-translate-y-1"
+        >
+          Checkout (F12)
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
