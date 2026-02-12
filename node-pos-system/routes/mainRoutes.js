@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
 
   try {
     // A. Login ជា Owner (កូដ hardcode ឬ env)
-    const ownerEmail = process.env.FIREBASE_CLIENT_EMAIL;
+    const ownerEmail = process.env.OWNER_EMAIL;
     const ownerPass = process.env.OWNER_SECRET_CODE;
 
     if (email === ownerEmail && password === ownerPass) {
